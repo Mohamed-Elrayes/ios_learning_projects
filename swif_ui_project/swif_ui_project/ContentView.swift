@@ -8,29 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var messageString = "Namaste";
+    @State var messageString = 0;
     
     var body: some View {
         GeometryReader {i in
             VStack{
+                Image("image\(messageString)")
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(30)
+                    .shadow(radius: 30)
+                    .padding()
                 Spacer()
 
-                Text(messageString)
+                Text("\(messageString)")
                     .bold()
                     .font(.largeTitle)
                     .frame(height:150)
                 
                 Spacer()
-                HStack{
-                    Button("Awsome") {
-                        
+              
+                    Button("Show Message") {
+                        messageString = (messageString == 1 ? 0 : 1)
+                       
                     }.buttonStyle(.borderedProminent)
-                    Spacer()
-                    Button("Great") {
-                        
-                    }.buttonStyle(.borderedProminent)
-                    
-                }.padding()
+
             }
         }
     }
