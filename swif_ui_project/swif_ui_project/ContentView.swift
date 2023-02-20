@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var messageString = 0;
+    @State var messageString = "";
+    @State var messageNumber = 0;
     
     var body: some View {
         GeometryReader {i in
             VStack{
-                Image("image\(messageString)")
+                Image("image\(messageNumber)")
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(30)
@@ -21,7 +22,7 @@ struct ContentView: View {
                     .padding()
                 Spacer()
 
-                Text("\(messageString)")
+                Text(String(messageString))
                     .bold()
                     .font(.largeTitle)
                     .frame(height:150)
@@ -29,7 +30,19 @@ struct ContentView: View {
                 Spacer()
               
                     Button("Show Message") {
-                        messageString = (messageString == 1 ? 0 : 1)
+                        //TODO: - update the imageName variable -
+                        //FIXME: - update the imageName variable -
+                        //MARK: - update the imageName variable -
+                        let messages = ["You are awsome!" , "You are Great" , "You are Fantastic" , "Fabulous? "]
+                        
+                        messageString = messages[messageNumber]
+                        messageNumber = Int.random(in: 0...messages.count-1)
+//                        if messageNumber == messages.count || messageNumber > 9{
+//                            messageNumber = 0
+//                        }else{
+//
+//                        }
+  
                        
                     }.buttonStyle(.borderedProminent)
 
